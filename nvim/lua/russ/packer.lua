@@ -3,7 +3,7 @@
 -- Only required if you have packer configured as `opt` (???)
 vim.cmd [[packadd packer.nvim]]
 
--- After adding a plugi, run :PackerSync
+-- After adding a plugin, run :PackerSync
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -12,6 +12,8 @@ return require('packer').startup(function(use)
   use 'folke/tokyonight.nvim'
   use 'gruvbox-community/gruvbox'
   use 'rose-pine/neovim'
+
+  use 'prettier/vim-prettier'
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
@@ -44,19 +46,8 @@ return require('packer').startup(function(use)
   }
 }
 
--- these are now being used above with lsp-zero - I'll keep them here for now
-  -- use 'neovim/nvim-lspconfig' -- built in LSP extras
-  -- use 'hrsh7th/nvim-cmp' -- LSP autocomplete 
-  -- use 'hrsh7th/cmp-nvim-lsp'
-  -- use 'hrsh7th/cmp-buffer'
-  -- use 'hrsh7th/cmp-path'
-  -- use 'saadparwaiz1/cmp_luasnip'
-  -- use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
-    
   -- Adds git diff gutter next to line number like VS*ode
   -- You can jump between hunks with [c and ]c. You can preview, stage, and undo hunks with <leader>hp, <leader>hs, and <leader>hu respectively
-
-
   use 'airblade/vim-gitgutter'
 
   use 'vim-airline/vim-airline' -- adds the status bar to the bottom
