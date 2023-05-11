@@ -11,7 +11,7 @@ lsp.ensure_installed({
     "tsserver",
     "eslint",
     "pyright",
-    "sumneko_lua",
+    "lua_ls",
     -- "rust_analyzer"
 })
 
@@ -55,9 +55,10 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>R", "<cmd>Telescope lsp_references<cr>", {buffer=0}) -- shows all references of something inside a project via Telescope
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0}) -- smart rename variable/func/etc -- it can replace in other files (if it does, run :wa to save those changes)
     vim.keymap.set("n", "<leader>c", "<Plug>(copilot#Accept)", {buffer=0}) -- leader (c)omplete copilot suggestion
-    --BROKEN :( vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_actions, {buffer=0}) -- server dependent - can do useful things like autoimport or organize imports(delete unused ones)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {buffer=0}) -- server dependent - can do useful things like autoimport or organize imports(delete unused ones)
     vim.keymap.set("n", "<leader>p", "<cmd>Prettier<cr>", { buffer = 0 }) -- leader (p)rettier - format
-
+    -- experimental
+    vim.keymap.set("n", "<leader>F", "<cmd>EslintFixAll<cr>", { buffer = 0 }) -- (F)ormat -- EslintFixAll
 end)
 
 -- prettier on save

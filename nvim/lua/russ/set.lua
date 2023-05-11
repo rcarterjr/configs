@@ -1,5 +1,7 @@
 -- vim.opt.guicursor = ""
 vim.g.mapleader = " "
+
+-- open netrw
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- allows us to move highlight lines up and down like VSC*de
@@ -33,20 +35,21 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
--- replaces all instances of word under cursor
+-- replaces all instances of word under cursor -- seems like * does the same thing ???
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
+vim.opt.ignorecase = true
 vim.opt.smartindent = true
 
 vim.opt.smartcase = true
