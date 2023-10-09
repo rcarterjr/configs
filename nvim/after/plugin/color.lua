@@ -7,7 +7,7 @@
 -- vim.cmd("colorscheme tokyonight")
 
 -- vim.cmd("colorscheme gruvbox")
- 
+
 -- https://github.com/EdenEast/nightfox.nvim
 -- vim.cmd("colorscheme nightfox") -- good one
 -- vim.cmd("colorscheme terafox")
@@ -18,7 +18,7 @@
 -- https://github.com/rose-pine/neovim for more settings
 -- vim.cmd("colorscheme rose-pine")
 
-require('rose-pine').setup({
+require("rose-pine").setup({
     disable_background = true -- Prime set this true
 })
 
@@ -30,4 +30,6 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-ColorMyPencils()
+-- treat this as colorscheme, just make sure colors 
+-- are install in packer.lua
+ColorMyPencils("rose-pine")

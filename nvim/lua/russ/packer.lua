@@ -11,17 +11,16 @@ return require('packer').startup(function(use)
 
   -- Colorschemes
   -- use 'folke/tokyonight.nvim'
-  -- use 'gruvbox-community/gruvbox'
+  use 'gruvbox-community/gruvbox'
   -- use 'rose-pine/neovim'
   -- use 'EdenEast/nightfox.nvim'
-  --
-  -- This is how Prime does it
 
+  -- This is how Prime does it
   use({
     'rose-pine/neovim',
     as = 'rose-pine',
     config = function()
-                  vim.cmd('colorscheme rose-pine')
+          vim.cmd('colorscheme rose-pine')
     end
   })
 
@@ -58,13 +57,12 @@ return require('packer').startup(function(use)
         ts_update()
     end,}
 
-  use("nvim-treesitter/playground")
+  -- adds sticky highlights to the current scope
+  use 'nvim-treesitter/nvim-treesitter-context'
+  use 'nvim-treesitter/playground'
   use 'prettier/vim-prettier'
-
   use 'github/copilot.vim'
-
   use 'theprimeagen/harpoon'
-
   use 'mbbill/undotree'
 
   use {
@@ -102,17 +100,15 @@ return require('packer').startup(function(use)
       end
   }
 
- 
-
   -- need to practice this one before i go live with it
-  -- use 'tpope/vim-fugitive'
+  use 'tpope/vim-fugitive'
 
   -- adds the status bar to the bottom
   use {
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
- 
+
   use {
   'nvim-telescope/telescope.nvim', tag = '0.1.0',
     -- or                            , branch = '0.1.x',
@@ -120,10 +116,30 @@ return require('packer').startup(function(use)
     }
 
   -- pointless plugin <leader>fml
-
   use 'eandrju/cellular-automaton.nvim'
- 
+
   -- kind of cool but is a little too distracting
   -- use "lukas-reineke/indent-blankline.nvim"
 
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  -- it was decent -- but i think i like the default better
+  -- use "stevearc/oil.nvim"
+
+  use 'nvim-tree/nvim-web-devicons'
+
+  use {
+   "folke/trouble.nvim",
+   dependencies = { "nvim-tree/nvim-web-devicons" },
+   opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+   }
+  }
+
 end)
+

@@ -12,7 +12,8 @@ lsp.ensure_installed({
     "eslint",
     "pyright",
     "lua_ls",
-    -- "rust_analyzer"
+    "gopls",
+    "rust_analyzer"
 })
 
 local cmp = require("cmp")
@@ -51,8 +52,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0}) -- when over an object, (g)o to (i)mplementation -- especially useful for Golang
     vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, {buffer=0}) -- go to next error (diagnostic)
     vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, {buffer=0}) -- go to previous error (diagnostic)
-    vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0}) -- diagnostics list, via Telescope
     vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, {buffer=0}) -- go to previous error (diagnostic)
+    vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0}) -- diagnostics list, via Telescope
     vim.keymap.set("n", "<leader>R", "<cmd>Telescope lsp_references<cr>", {buffer=0}) -- shows all references of something inside a project via Telescope
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0}) -- smart rename variable/func/etc -- it can replace in other files (if it does, run :wa to save those changes)
     vim.keymap.set("n", "<leader>c", "<Plug>(copilot#Accept)", {buffer=0}) -- leader (c)omplete copilot suggestion
@@ -62,15 +63,16 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>F", "<cmd>EslintFixAll<cr>", { buffer = 0 }) -- (F)ormat -- EslintFixAll
 end)
 
--- prettier on save
-vim.api.nvim_create_autocmd('BufWritePre', {
+-- prettier on save -- this kinda sucks
+--[[ vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
     command = 'silent! Prettier',--EslintFixAll',
     group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
-})
+}) ]]
 
 lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true
 })
+
