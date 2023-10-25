@@ -53,6 +53,10 @@ require('gitsigns').setup {
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
+    vim.cmd[[ highlight GitSignsChange guibg=NONE ]]
+    vim.cmd[[ highlight GitSignsAdd guibg=NONE ]]
+    vim.cmd[[ highlight GitSignsDelete guibg=NONE ]]
+
     local function map(mode, l, r, opts)
       opts = opts or {}
       opts.buffer = bufnr
