@@ -2,7 +2,8 @@
 vim.g.mapleader = " "
 
 -- open netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- trying oil -- undo 
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- allows us to move highlight lines up and down like VSC*de
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -27,7 +28,8 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- add this back, maybe.. trying Prettier
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- quick fix navigation
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")

@@ -20,30 +20,30 @@ return require('packer').startup(function(use)
     'rose-pine/neovim',
     as = 'rose-pine',
     config = function()
-          vim.cmd('colorscheme rose-pine')
+      vim.cmd('colorscheme rose-pine')
     end
   })
 
   -- <leader>zz
   use {
-  "folke/zen-mode.nvim",
-  config = function()
-    require("zen-mode").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
       }
     end
   }
 
   -- dims inactive portions of the code when in Zen mode
   use {
-  "folke/twilight.nvim",
-  config = function()
-    require("twilight").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
       }
     end
   }
@@ -53,9 +53,9 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
-        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-        ts_update()
-    end,}
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end, }
 
   -- adds sticky highlights to the current scope
   use 'nvim-treesitter/nvim-treesitter-context'
@@ -66,38 +66,38 @@ return require('packer').startup(function(use)
   use 'mbbill/undotree'
 
   use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v1.x',
-  requires = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v1.x',
+    requires = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },         -- Required
+      { 'williamboman/mason.nvim' },       -- Optional
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
-    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-    {'hrsh7th/cmp-nvim-lua'},     -- Optional
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },     -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'hrsh7th/cmp-buffer' },   -- Optional
+      { 'hrsh7th/cmp-path' },     -- Optional
+      { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+      { 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
-    -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
-    {'rafamadriz/friendly-snippets'}, -- Optional
+      -- Snippets
+      { 'L3MON4D3/LuaSnip' },         -- Required
+      { 'rafamadriz/friendly-snippets' }, -- Optional
+    }
   }
-}
 
   -- Adds git diff gutter next to line number like VS*ode
   -- https://github.com/lewis6991/gitsigns.nvim (other cool shortcuts)
-   use 'lewis6991/gitsigns.nvim'
+  use 'lewis6991/gitsigns.nvim'
 
   -- https://github.com/numToStr/Comment.nvim
   use {
-      'numToStr/Comment.nvim',
-      config = function()
-          require('Comment').setup()
-      end
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
   }
 
   -- need to practice this one before i go live with it
@@ -105,15 +105,15 @@ return require('packer').startup(function(use)
 
   -- adds the status bar to the bottom
   use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
   use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
     -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
 
   -- pointless plugin <leader>fml
   use 'eandrju/cellular-automaton.nvim'
@@ -122,24 +122,34 @@ return require('packer').startup(function(use)
   -- use "lukas-reineke/indent-blankline.nvim"
 
   use {
-	"windwp/nvim-autopairs",
+    "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
 
-  -- it was decent -- but i think i like the default better
-  -- use "stevearc/oil.nvim"
+  use "stevearc/oil.nvim"
 
   use 'nvim-tree/nvim-web-devicons'
 
   use {
-   "folke/trouble.nvim",
-   dependencies = { "nvim-tree/nvim-web-devicons" },
-   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-   }
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
   }
 
+  -- web stuff
+  use('neovim/nvim-lspconfig')
+  -- use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require("null-ls").setup()
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
+  })
 end)
 

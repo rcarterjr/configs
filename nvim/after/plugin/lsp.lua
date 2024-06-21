@@ -63,12 +63,11 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>F", "<cmd>EslintFixAll<cr>", { buffer = 0 }) -- (F)ormat -- EslintFixAll
 end)
 
--- prettier on save -- this kinda sucks
---[[ vim.api.nvim_create_autocmd('BufWritePre', {
+vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
     command = 'silent! Prettier',--EslintFixAll',
     group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
-}) ]]
+})
 
 lsp.setup()
 
