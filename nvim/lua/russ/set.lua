@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 
 -- open netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- allows us to move highlight lines up and down like VSC*de
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -72,4 +72,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 
 vim.opt.isfname:append("@-@")
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
