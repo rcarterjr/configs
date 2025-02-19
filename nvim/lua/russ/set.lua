@@ -71,6 +71,10 @@ vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 
+-- block cursor
+-- n - normal, v - visual, i - insert, c - command
+vim.opt.guicursor = "n-v-i-c:block-Cursor"
+
 vim.opt.isfname:append("@-@")
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
