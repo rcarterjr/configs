@@ -1,28 +1,45 @@
--- figure out what I want to replace with Lazy api
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })                           -- "in (n)ormal mode, map "K" to vim.lsp.bug.hover() only for this ([0]) buffer" -- run :help <func name> to learn more
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })                     -- when over a function name, (g)o to (d)efinition
-vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })                -- when over an object, (g)o to (t)ype
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })                 -- when over an object, (g)o to (i)mplementation -- especially useful for Golang
-vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { buffer = 0 })           -- go to next error (diagnostic)
-vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = 0 })           -- go to previous error (diagnostic)
-vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, { buffer = 0 })          -- go to previous error (diagnostic)
-vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })   -- diagnostics list, via Telescope
-vim.keymap.set("n", "<leader>R", "<cmd>Telescope lsp_references<cr>", { buffer = 0 }) -- shows all references of something inside a project via Telescope
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })                  -- smart rename variable/func/etc -- it can replace in other files (if it does, run :wa to save those changes)
-vim.keymap.set("n", "<leader>c", "<Plug>(copilot#Accept)", { buffer = 0 })            -- leader (c)omplete copilot suggestion
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })            -- server dependent - can do useful things like autoimport or organize imports(delete unused ones)
-vim.keymap.set("n", "<leader>p", "<cmd>Prettier<cr>", { buffer = 0 })                 -- leader (p)rettier - format
--- experimental
-vim.keymap.set("n", "<leader>F", "<cmd>EslintFixAll<cr>", { buffer = 0 })             -- (F)ormat -- EslintFixAll
+-- vim.opt.guicursor = ""
+vim.g.mapleader = " "
 
--- prettier on save -- this kinda sucks
---[[ vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-    command = 'silent! Prettier',--EslintFixAll',
-    group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
-}) ]]
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+-- allows us to move highlight lines up and down like VSC*de
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.diagnostic.config({
-  virtual_text = true
-})
+-- append to line above
+vim.keymap.set("n", "J", "mzJ`z")
+-- CTRL + D  the cursor will move down a page and center the cursor
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- CTRL + U  the cursor will move down a page and center the cursor
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- keeps cursor centered when jumping to next/previous search result
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- "greatest remap ever" -- maintains copy buffer when pasting or somethin
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+-- copy to system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+-- quick fix navigation
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
+-- -- highlights all instance of a word and allows you to change them all at once
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- make current file executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- if tmux isnt running while calling sessionizer, start it up 
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
