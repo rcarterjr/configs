@@ -17,6 +17,9 @@ return {
   config = function()
     require("conform").setup({
       formatters_by_ft = {
+        -- does this work???
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
       }
     })
     local cmp = require('cmp')
@@ -35,7 +38,7 @@ return {
         "eslint",
         "pyright",
         "lua_ls",
-        "gopls",
+        -- "gopls",
         "rust_analyzer"
       },
       handlers = {
