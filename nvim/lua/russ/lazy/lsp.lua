@@ -34,9 +34,9 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "ts_ls",
-        "eslint",
-        "pyright",
+        -- "ts_ls",
+        -- "eslint",
+        -- "pyright",
         "lua_ls",
         -- "gopls",
         "rust_analyzer"
