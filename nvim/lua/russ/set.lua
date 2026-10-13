@@ -1,6 +1,8 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+vim.opt.autoread = true
+
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -28,5 +30,7 @@ vim.opt.signcolumn = "yes"
 -- block cursor
 -- n - normal, v - visual, i - insert, c - command
 vim.opt.guicursor = "n-v-i-c:block-Cursor"
+-- cant figure out how to change color of block
+-- vim.opt.guicursor = "n-v-i-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50"
 
 vim.opt.isfname:append("@-@")

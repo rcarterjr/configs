@@ -9,6 +9,9 @@ return {
           width = 120,
           options = {}
         },
+        plugins = {
+          twilight = { enabled = false }
+        }
       }
       require("zen-mode").toggle()
       vim.wo.wrap = false
@@ -17,7 +20,6 @@ return {
       ColorMyPencils()
     end)
 
-    -- Disabled twilight dimming
     vim.keymap.set("n", "<leader>zZ", function()
       require("zen-mode").setup {
         window = {
@@ -25,7 +27,7 @@ return {
           options = {}
         },
         plugins = {
-          twilight = { enabled = false }
+          twilight = { enabled = true }
         }
       }
       require("zen-mode").toggle()
